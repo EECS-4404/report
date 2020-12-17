@@ -18,7 +18,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %----------------------------------------------------------------------------------------
-%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%   PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
 %----------------------------------------------------------------------------------------
 
 \documentclass{article}
@@ -86,8 +86,8 @@
 \setlength\parindent{0pt} % Removes all indentation from paragraphs
 
 %----------------------------------------------------------------------------------------
-%	DOCUMENT STRUCTURE COMMANDS
-%	Skip this unless you know what you're doing
+%   DOCUMENT STRUCTURE COMMANDS
+%   Skip this unless you know what you're doing
 %----------------------------------------------------------------------------------------
 
 % Header and footer for when a page split occurs within a problem environment
@@ -126,7 +126,7 @@
 }
    
 %----------------------------------------------------------------------------------------
-%	NAME AND CLASS SECTION
+%   NAME AND CLASS SECTION
 %----------------------------------------------------------------------------------------
 \newcommand{\hmwkTitle}{Final Project - Group 4} % Assignment title
 \newcommand{\hmwkDueDate}{Sunday,\ December\ 20,\ 2020} % Due date
@@ -136,7 +136,7 @@
 
 
 %----------------------------------------------------------------------------------------
-%	TITLE PAGE
+%   TITLE PAGE
 %----------------------------------------------------------------------------------------
 
 \title{
@@ -200,9 +200,9 @@ A repository for each predictor was created on GitHub, and a timetable (left pic
 \begin{tabular}{@{}lll@{}}
 \textbf{Sub-group 1} & \textbf{Sub-group 2} & \textbf{Sub-group 3}\\
 \hline
-Jamie Dantas &	Minghong Xu	&Nizwa Javed\\
-Matthew Tolentino &	Baoqi Yu &	Thomas Lykouras                         \\
-David Mounes &	Yiming Shao	 & Umer Qudrat  
+Jamie Dantas &  Minghong Xu &Nizwa Javed\\
+Matthew Tolentino & Baoqi Yu &  Thomas Lykouras                         \\
+David Mounes &  Yiming Shao  & Umer Qudrat  
 \end{tabular}
 \end{center}
 Each sub-group trained a different predictor. Additionally, the remaining tasks were equally distributed among everyone. Several Zoom calls were made to discuss the project, and a Discord channel was created for discussion. 
@@ -263,11 +263,10 @@ When it comes to the F1-score on the validation dataset, we got $F1_{V} = 94.2\%
 The second predictor we trained was the k-nearest neighbour predictor. The process was completed in three steps: data preparation, parameter tuning and predictor evaluation.
 \\
 \\
-First of all, we trained our first demo predictor using the training dataset based on the KNN Scikit Tool (with default parameters) in Python \cite{knn}. After testing the predictor on the training data, we saw that the accuracy at this stage was 86.2\%, which was not acceptable. So, we then tried a different range of k, from 1 to 50, and analyzed the results. The figure shows the results for the training dataset and the testing dataset using cross-validation. By observing the original data, we found that the range of each column in the input data are distinct, i.e., the range of tau1
-(column 1) is around 0 to 10, and the range of g2 (column 10) is around 0 to 1. In this case, g2 may accidentally become more uninformative than tau1. This is because the calculation of distance in KNN is based on the input features, so a larger range feature has a larger impact on the distance since the Euclidian distance equation is given by $D(x,y) = \sqrt{\sum_n (x_i-y_i)^2}$. For this reason, we normalized all data by scaling them to the range of 0 to 1. 
+First of all, we trained our first demo predictor using the training dataset based on the KNN Scikit Tool (with default parameters) in Python \cite{knn}. By observing the original data, we found that the range of each column in the input data are distinct, i.e., the range of tau1 (column 1) is around 0 to 10, and the range of g2 (column 10) is around 0 to 1. In this case, g2 may accidentally become more uninformative than tau1. This is because the calculation of distance in KNN is based on the input features, so a larger range feature has a larger impact on the distance since the Euclidian distance equation is given by $D(x,y) = \sqrt{\sum_n (x_i-y_i)^2}$. For that reason, we normalized all data by scaling them to the range of 0 to 1. 
 \\
 \\
-Then we split the training dataset into training (80\%) and validation (20\%), and obtained an accuracy of 86.7\% on the validation dataset without any tuning. Next, we performed the parameter tuning step, which is one of the most important processes that dominate the behaviour of a predictor, and ultimately resulting in the best optimal combination of parameters possible. Although the Python sklearn’s documentation states there are eight parameters, we only put three of them into our tuning process:
+Then, we split the training dataset into training (80\%) and validation (20\%), and trained out first demo predictor. The model we trained had an accuracy of 86.7\% on the validation dataset without any tuning. Next, in order to improve the performance of the predictor, we performed the parameter tuning step. This step is one of the most important processes that dominate the behaviour of a predictor, and ultimately resulting in the best optimal combination of parameters possible. Although the Python sklearn’s documentation states there are eight parameters, we only put three of them into our tuning process:
 \begin{itemize}
     \item \textit{n\_neighbours}: number of neighbours used to calculate k-neighbours. We tested from 2 to 20.
     \item  weights: there are two choices: uniform or distance. Uniform means all points in each neighbourhood are weighted equally whereas distance means the closer point is weighted more. We tested both cases.
@@ -342,9 +341,9 @@ For each predictor, the accuracy and F1-score for the test set can be seen in th
 \begin{tabular}{@{}lll@{}}
 \textbf{Predictor} & \textbf{Accuracy} & \textbf{F-1 Score}\\
 \hline
-Feed Forward Neural Network &	0.9545	&0.939\\
-KNN &	0.861 &	0.7903                        \\
-\textbf{Kernelized SVM} &	\textbf{0.963}	 & \textbf{0.9506}  
+Feed Forward Neural Network &   0.9545  &0.939\\
+KNN &   0.861 & 0.7903                        \\
+\textbf{Kernelized SVM} &   \textbf{0.963}   & \textbf{0.9506}  
 \end{tabular}
 \end{center}
 
@@ -359,8 +358,8 @@ We combined the predictors using weighted majority hard voting. Each predictor w
 \begin{tabular}{@{}lll@{}}
 \textbf{Weights [Predictor 1, Predictor 2, Predictor 3]} & \textbf{Accuracy} & \textbf{F-1 Score}\\
 \hline
-[0.333,0.333,0.333] &	0.9595	&0.9449\\
-\textbf{[0.25, 0.25, 0.5],[0.3,0.2,0.5]} &	\textbf{0.965} &	\textbf{0.9538}     \\
+[0.333,0.333,0.333] &   0.9595  &0.9449\\
+\textbf{[0.25, 0.25, 0.5],[0.3,0.2,0.5]} &  \textbf{0.965} &    \textbf{0.9538}     \\
 {[0.5,0,0.5]} &    0.963   &0.952    \relax
 
 \end{tabular}

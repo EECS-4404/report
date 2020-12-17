@@ -1,2 +1,2 @@
 # Final Report
-This repository will be updated once the project is submitted on e-class
+The final report can be found [here](/Final_Project_ML.pdf)
